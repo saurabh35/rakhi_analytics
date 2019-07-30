@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\RakhiCampaign;
 use App\SYMBResponse;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,9 @@ class ShareController extends Controller
 
         $rakhi = RakhiCampaign::find($request->input('id'));
 
-        return view('share', ['rakhi' => $rakhi]);
+        $baseUrl = "http://34.93.119.226:3000/";
+        $fileName = $baseUrl. $rakhi->id.".png";
+        return view('share', ['rakhi' => $rakhi,'fileName' => $fileName]);
     }
 
     public function saveRakhi2cmData(Request $request){
@@ -60,17 +63,29 @@ class ShareController extends Controller
         $rakhi->save();
         $message = "प्रति,\nश्री. देवेंद्र फडणवीस\nमाननीय मुख्यमंत्री\nमहाराष्ट्र प्रदेश (राज्य)\n\n";
         $message = $message. $rakhi->sandesh;
+        $name = $rakhi->name;
 
 
-        $url = 'http://34.93.119.226:3000/?message=' . urlencode($message). '&';
-        $ch = curl_init();
-        $timeout = 60;
-        curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        Log::info($data);
+
+        $url = 'http://34.93.119.226:3000/?message=' . urlencode($message). '&name='
+            .urlencode($name).
+            "&salutation=".urlencode("आपली बहीण,")."&filename=".$rakhi->id.".png";
+
+        $client = new Client();
+        try{
+            $resp = $client->get($url);
+            if ($resp->getStatusCode() == 200)
+            $res = $resp->getBody();
+            $resArr = json_decode($res, true);
+            Log::info($resArr);
+            if ($resArr['success']){
+                $rakhi->imageUrl = $resArr['url'];
+                $rakhi->save();
+            }
+        }catch (\Exception $exception){
+            Log::info($exception->getMessage());
+        }
+
         return Response::json(SYMBResponse::getSuccessMessage("Please enter otp to send the Rakhi", $rakhi, 200 ), 200);
     }
     private function sendOtp($otp, $phone){

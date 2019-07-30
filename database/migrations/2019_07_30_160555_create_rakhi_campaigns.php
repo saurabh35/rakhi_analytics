@@ -21,6 +21,7 @@ class CreateRakhiCampaigns extends Migration
             $table->text("sandesh");
             $table->text("otp");
             $table->text("utm_source")->nullable();
+            $table->text("imageUrl")->nullable();
             $table->timestamps();
         });
     }
