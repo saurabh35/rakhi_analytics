@@ -22,121 +22,98 @@
             background-size: 100%;
             /*background-color: #cccccc;*/
         }
-
         .zoom {
             transition: transform .2s; /* Animation */
             margin: 0 auto;
         }
-
         .zoom:hover {
             transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
-
         .resp-sharing-button__link,
         .resp-sharing-button__icon {
             display: inline-block
         }
-
         .resp-sharing-button__link {
             text-decoration: none;
             color: #fff;
             margin: 0.5em
         }
-
         .resp-sharing-button {
             border-radius: 5px;
             transition: 25ms ease-out;
             padding: 0.5em 0.75em;
             font-family: Helvetica Neue, Helvetica, Arial, sans-serif
         }
-
         .resp-sharing-button__icon svg {
             width: 1em;
             height: 1em;
             margin-right: 0.4em;
             vertical-align: top
         }
-
         .resp-sharing-button--small svg {
             margin: 0;
             vertical-align: middle
         }
-
         /* Non solid icons get a stroke */
         .resp-sharing-button__icon {
             stroke: #fff;
             fill: none
         }
-
         /* Solid icons get a fill */
         .resp-sharing-button__icon--solid {
             fill: #fff;
             stroke: none
         }
-
         .resp-sharing-button--twitter {
             background-color: #55acee
         }
-
         .resp-sharing-button--twitter:hover {
             background-color: #2795e9
         }
-
         .resp-sharing-button--facebook {
             background-color: #3b5998
         }
-
         .resp-sharing-button--facebook:hover {
             background-color: #2d4373
         }
-
         .resp-sharing-button--email {
             background-color: #777
         }
-
         .resp-sharing-button--email:hover {
             background-color: #5e5e5e
         }
-
         .resp-sharing-button--facebook {
             background-color: #3b5998;
             border-color: #3b5998;
         }
-
         .resp-sharing-button--facebook:hover,
         .resp-sharing-button--facebook:active {
             background-color: #2d4373;
             border-color: #2d4373;
         }
-
         .resp-sharing-button--twitter {
             background-color: #55acee;
             border-color: #55acee;
         }
-
         .resp-sharing-button--twitter:hover,
         .resp-sharing-button--twitter:active {
             background-color: #2795e9;
             border-color: #2795e9;
         }
-
         .resp-sharing-button--email {
             background-color: #777777;
             border-color: #777777;
         }
-
         .resp-sharing-button--email:hover,
         .resp-sharing-button--email:active {
             background-color: #5e5e5e;
             border-color: #5e5e5e;
         }
-
         div.scrollmenu {
             background-color: white;
             overflow: auto;
             white-space: nowrap;
         }
-
         div.scrollmenu a {
             display: inline-block;
             color: white;
@@ -144,7 +121,6 @@
             padding: 8px;
             text-decoration: none;
         }
-
         div.scrollmenu a:hover {
             background-color: #e1e1e1;
         }
@@ -214,10 +190,11 @@
         </form>
         <button id="openModal" hidden type="button" class="" data-toggle="modal" data-target="#myModal">Open Modal
         </button>
-        <button id="otpModalBtn" hidden type="button" class="" data-toggle="modal" data-target="#otpModal">Open Modal
+        <button id="otpModalBtn" onclick="otpButton()" hidden type="button" class="" data-toggle="modal"
+                data-target="#otpModal">Open Modal
         </button>
         <div class="modal fade" id="otpModal" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <!-- Modal content-->
                 <div class="modal-content" style="border-radius: 40px">
                     <div class="modal-body" style="padding: 0px">
@@ -264,7 +241,6 @@
                                             </div>
                                         </div>
                                     </div>
-
 
 
                                 </div>
@@ -343,7 +319,7 @@
         </div>
 
         <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <!-- Modal content-->
                 <div class="modal-content" style="border-radius: 40px">
                     <div class="modal-body" style="padding: 0px">
@@ -521,22 +497,18 @@
     var siteWidth = 1280;
     var scale = screen.width / siteWidth;
     document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + siteWidth + ', initial-scale=' + scale + '');
-
     var chosen_image_id = "";
     var rakhi_id = "";
-    var base_url = "https://www.mahabjp.in/";
+    var base_url = "{{url('/')}}";
     function post_req() {
-
         var name = $("#name").val();
         var number = $("#number").val();
         var message = $("#message").val();
-
         if (name.length === 0) {
             alert("कृपया आपले नाव प्रविष्ट करा");
             return;
         }
         var regex = /[5-9|\b|/]/;
-
         if (!regex.test(number)) {
             alert("कृपया वैध क्रमांक प्रविष्ट करा");
             return;
@@ -553,8 +525,6 @@
             alert("कृपया मुख्यमंत्री म्हणून राखी निवडा");
             return;
         }
-
-
         $.post( base_url + "/api/rakhi", {
             name: name,
             mobile: number,
@@ -562,23 +532,13 @@
             sandesh: message
         }, function (data) {
             if (data["type"] === "success") {
-
-                // $("#name").val('');
-                // $("#number").val('');
-                // $("#message").val('');
-                // chosen_image_id  = "";
-                // $("#sent").text(name + ", तुमची राखी पाठवली गेली आहे!");
-                // document.getElementById("senderId").innerHTML="आपली बहीण, <br>" + name;
-                // $("#cmMessage").text(message);
                 rakhi_id = data['data']['id'];
                 $("#otpModalBtn").click();
             }
         })
     }
-
     function validate(evt) {
         var theEvent = evt || window.event;
-
         // Handle paste
         if (theEvent.type === 'paste') {
             key = event.clipboardData.getData('text/plain');
@@ -593,45 +553,40 @@
             if (theEvent.preventDefault) theEvent.preventDefault();
         }
     }
-
     function maxLengthCheck(object) {
         if (object.value.length > object.maxLength)
             object.value = object.value.slice(0, object.maxLength)
     }
-
+    function otpButton() {
+        location.href='#top';
+        $('#otpModal').trigger('focus')
+    }
     function mark(item) {
         if (chosen_image_id !== "") {
             getChildImage(chosen_image_id).removeAttribute("style");
             getChildImage(chosen_image_id).setAttribute("style", "max-width:100%;");
         }
-
-
         chosen_image_id = item.getAttribute("id");
         getChildImage(item.getAttribute("id")).setAttribute("style", "max-width:100%; border: 2px solid #fb743f;");
         console.log(chosen_image_id);
     }
-
     function removeElement(id) {
         var elem = document.getElementById(id);
         return elem.parentNode.removeChild(elem);
     }
-
     function getChildImage(parentId) {
         return document.getElementById(parentId).firstElementChild
     }
-
     function verifyOtp() {
         var otp = $("#otpValue").val();
         var number = $("#number").val();
         var message = $("#message").val();
         var name = $("#name").val();
-
         if (otp.length  < 4) {
             alert("कृपया आपले ओटीपी प्रविष्ट करा");
             return;
         }
-
-        $.post( base_url + "api/rakhi-otp-verify", {
+        $.post( base_url + "/api/rakhi-otp-verify", {
             otp: otp,
             mobile: number,
             id: rakhi_id
@@ -647,11 +602,14 @@
                 $("#cmMessage").text(message);
                 $("#otpModal").modal('hide');
                 $("#openModal").click();
+                $('#myModal').trigger('focus')
             }else{
                 alert("चुकीचा ओटीपी");
                 // $("#otpModalBtn").click();
             }
+        }).fail(function (err) {
+            console.log(err)
+            console.log(err.statusText)
         });
-
     }
 </script>
