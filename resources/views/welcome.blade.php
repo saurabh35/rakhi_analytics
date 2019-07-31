@@ -151,7 +151,7 @@
     </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144830662-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144818346-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -160,7 +160,7 @@
         }
 
         gtag('js', new Date());
-        gtag('config', 'UA-144830662-1');
+        gtag('config', 'UA-144818346-1');
     </script>
 
 </head>
