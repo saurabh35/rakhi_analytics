@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 
 Route::get('/share', "ShareController@share");
+Route::get('/blank', "ShareController@blank");

@@ -125,4 +125,7 @@ class ShareController extends Controller
         }
 
     }
+    public function blank(){
+        return view('dummy');
+    }
 }
