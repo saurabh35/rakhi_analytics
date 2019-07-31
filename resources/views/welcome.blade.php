@@ -22,98 +22,121 @@
             background-size: 100%;
             /*background-color: #cccccc;*/
         }
+
         .zoom {
             transition: transform .2s; /* Animation */
             margin: 0 auto;
         }
+
         .zoom:hover {
             transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
+
         .resp-sharing-button__link,
         .resp-sharing-button__icon {
             display: inline-block
         }
+
         .resp-sharing-button__link {
             text-decoration: none;
             color: #fff;
             margin: 0.5em
         }
+
         .resp-sharing-button {
             border-radius: 5px;
             transition: 25ms ease-out;
             padding: 0.5em 0.75em;
             font-family: Helvetica Neue, Helvetica, Arial, sans-serif
         }
+
         .resp-sharing-button__icon svg {
             width: 1em;
             height: 1em;
             margin-right: 0.4em;
             vertical-align: top
         }
+
         .resp-sharing-button--small svg {
             margin: 0;
             vertical-align: middle
         }
+
         /* Non solid icons get a stroke */
         .resp-sharing-button__icon {
             stroke: #fff;
             fill: none
         }
+
         /* Solid icons get a fill */
         .resp-sharing-button__icon--solid {
             fill: #fff;
             stroke: none
         }
+
         .resp-sharing-button--twitter {
             background-color: #55acee
         }
+
         .resp-sharing-button--twitter:hover {
             background-color: #2795e9
         }
+
         .resp-sharing-button--facebook {
             background-color: #3b5998
         }
+
         .resp-sharing-button--facebook:hover {
             background-color: #2d4373
         }
+
         .resp-sharing-button--email {
             background-color: #777
         }
+
         .resp-sharing-button--email:hover {
             background-color: #5e5e5e
         }
+
         .resp-sharing-button--facebook {
             background-color: #3b5998;
             border-color: #3b5998;
         }
+
         .resp-sharing-button--facebook:hover,
         .resp-sharing-button--facebook:active {
             background-color: #2d4373;
             border-color: #2d4373;
         }
+
         .resp-sharing-button--twitter {
             background-color: #55acee;
             border-color: #55acee;
         }
+
         .resp-sharing-button--twitter:hover,
         .resp-sharing-button--twitter:active {
             background-color: #2795e9;
             border-color: #2795e9;
         }
+
         .resp-sharing-button--email {
             background-color: #777777;
             border-color: #777777;
         }
+
         .resp-sharing-button--email:hover,
         .resp-sharing-button--email:active {
             background-color: #5e5e5e;
             border-color: #5e5e5e;
         }
+
         div.scrollmenu {
             background-color: white;
             overflow: auto;
             white-space: nowrap;
         }
+
         div.scrollmenu a {
             display: inline-block;
             color: white;
@@ -121,6 +144,7 @@
             padding: 8px;
             text-decoration: none;
         }
+
         div.scrollmenu a:hover {
             background-color: #e1e1e1;
         }
@@ -130,7 +154,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144830662-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
         gtag('config', 'UA-144830662-1');
     </script>
@@ -157,14 +185,16 @@
             </div>
             <div class="form-group" style="margin-left: 15%; margin-right: 15%">
                 <label for="number" style="font-size: 2.5rem;">नंबर</label>
-                <input style="padding: 31px"  type="text" class="form-control" id="number" name="number" onkeypress="validate(event)"
+                <input style="padding: 31px" type="text" class="form-control" id="number" name="number"
+                       onkeypress="validate(event)"
                        pattern='^[5-9]\d{9}$'
                        oninvalid="this.setCustomValidity('Please enter a valid 10 digit mobile number')"
                        onchange="try{setCustomValidity('')}catch(e){}" oninput="setCustomValidity(' ')" maxlength="10">
             </div>
             <div class="form-group" style="margin-left: 15%; margin-right: 15%">
                 <label for="message" style="font-size: 2.5rem;">संदेश</label>
-                <textarea style="padding: 31px"  rows="4" cols="70" id="message" name="message" class="form-control"></textarea>
+                <textarea style="padding: 31px" rows="4" cols="70" id="message" name="message"
+                          class="form-control"></textarea>
             </div>
             <!--            //***********************************************************-->
             <div class="container">
@@ -212,8 +242,8 @@
                                             <div class="row" style="margin-top: 20%">
 
                                                 <div class="col-md-5"></div>
-                                                <div  class="col-md-7"
-                                                      style=" position: relative; font-size: 0.9em; font-weight: bold; text-align: center">
+                                                <div class="col-md-7"
+                                                     style=" position: relative; font-size: 0.9em; font-weight: bold; text-align: center">
                                                     कृपया ओटीपी प्रविष्ट करा
                                                 </div>
                                             </div>
@@ -222,12 +252,15 @@
 
                                                 </div>
 
-                                                <div  class="col-md-7" style="position: relative; font-size: 0.9em; font-weight: bold; text-align: start">
-                                                    <input style="text-align: center; margin-top: 5%"  id="otpValue" type="text" class="form-control" onkeypress="validate(event)"
+                                                <div class="col-md-7"
+                                                     style="position: relative; font-size: 0.9em; font-weight: bold; text-align: start">
+                                                    <input style="text-align: center; margin-top: 5%" id="otpValue"
+                                                           type="text" class="form-control" onkeypress="validate(event)"
                                                            pattern='^[1-9]\d{9}$'
                                                            placeholder="कृपया ओटीपी प्रविष्ट करा"
                                                            oninvalid="this.setCustomValidity('')"
-                                                           onchange="try{setCustomValidity('')}catch(e){}" oninput="setCustomValidity(' ')" maxlength="6">
+                                                           onchange="try{setCustomValidity('')}catch(e){}"
+                                                           oninput="setCustomValidity(' ')" maxlength="6">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -235,8 +268,12 @@
 
                                                 </div>
 
-                                                <div  class="col-md-7" style="position: relative; font-size: 0.9em; font-weight: bold; text-align: start">
-                                                    <input  style="text-align: center; justify-items: center; margin-top: 5%"  onclick="verifyOtp()" type="button" class="btn btn-primary" value="Submit">
+                                                <div class="col-md-7"
+                                                     style="position: relative; font-size: 0.9em; font-weight: bold; text-align: start">
+                                                    <input
+                                                        style="text-align: center; justify-items: center; margin-top: 5%"
+                                                        onclick="verifyOtp()" type="button" class="btn btn-primary"
+                                                        value="Submit">
                                                 </div>
                                             </div>
                                         </div>
@@ -337,20 +374,38 @@
                                             <div class="row" style="margin-top: 10%">
 
                                                 <div class="col-md-5"></div>
-                                                <div id="cmName" class="col-md-7"
+                                                <div id="cmName" class="col-md-5"
                                                      style="position: relative; font-size: 0.9em; font-weight: bold; text-align: start">
                                                     प्रति,<br>
                                                     श्री. देवेंद्र फडणवीस<br>
                                                     माननीय मुख्यमंत्री<br>
                                                     महाराष्ट्र प्रदेश (राज्य )<br></div>
+                                                <div class="col-md-2">
+                                                    <a id="fbshare" class="resp-sharing-button__link"
+                                                       href="https://facebook.com/sharer/sharer.php?u=https://rakhi2cm.com/" rel="noopener"
+                                                       aria-label="Share on Facebook">
+                                                        <div class="resp-sharing-button resp-sharing-button&#45;&#45;facebook resp-sharing-button&#45;&#45;large">
+                                                            <div aria-hidden="true"
+                                                                class="resp-sharing-button__icon
+                                                                resp-sharing-button__icon&#45;&#45;solid">
+                                                                <svg style="padding-top: 5px"
+                                                                     xmlns="http://www.w3.org/2000/svg"
+                                                                     viewBox="0 0 24 24">
+                                                                    <path
+                                                                        d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
 
                                             <div class="row" style="margin-top: 5%; font-size: 0.9em">
                                                 <div class="col-lg-5">
 
                                                 </div>
-                                                <div  class="col-lg-7"
-                                                      style="position: relative;  font-weight: bold; font-size: 0.9em; text-align: start">
+                                                <div class="col-lg-7"
+                                                     style="position: relative;  font-weight: bold; font-size: 0.9em; text-align: start">
                                                     <span id="cmMessage">
                                                     </span>
                                                 </div>
@@ -363,7 +418,8 @@
                                                 <div class="col-md-7"
                                                      style="position: relative;  font-weight: bold; text-align: start">
                                                     <div class="row" style="float: right;">
-                                                        <div id="senderId" class="col-md-12" style="text-align: left; font-size: 0.9em;">
+                                                        <div id="senderId" class="col-md-12"
+                                                             style="text-align: left; font-size: 0.9em;">
                                                         </div>
                                                     </div>
 
@@ -500,6 +556,7 @@
     var chosen_image_id = "";
     var rakhi_id = "";
     var base_url = "{{url('/')}}";
+
     function post_req() {
         var name = $("#name").val();
         var number = $("#number").val();
@@ -513,7 +570,7 @@
             alert("कृपया वैध क्रमांक प्रविष्ट करा");
             return;
         }
-        if (number.length <10) {
+        if (number.length < 10) {
             alert("कृपया वैध क्रमांक प्रविष्ट करा");
             return;
         }
@@ -525,7 +582,7 @@
             alert("कृपया मुख्यमंत्री म्हणून राखी निवडा");
             return;
         }
-        $.post( base_url + "/api/rakhi", {
+        $.post(base_url + "/api/rakhi", {
             name: name,
             mobile: number,
             rakhi: chosen_image_id,
@@ -537,6 +594,7 @@
             }
         })
     }
+
     function validate(evt) {
         var theEvent = evt || window.event;
         // Handle paste
@@ -553,14 +611,17 @@
             if (theEvent.preventDefault) theEvent.preventDefault();
         }
     }
+
     function maxLengthCheck(object) {
         if (object.value.length > object.maxLength)
             object.value = object.value.slice(0, object.maxLength)
     }
+
     function otpButton() {
-        location.href='#top';
+        location.href = '#top';
         $('#otpModal').trigger('focus')
     }
+
     function mark(item) {
         if (chosen_image_id !== "") {
             getChildImage(chosen_image_id).removeAttribute("style");
@@ -570,23 +631,26 @@
         getChildImage(item.getAttribute("id")).setAttribute("style", "max-width:100%; border: 2px solid #fb743f;");
         console.log(chosen_image_id);
     }
+
     function removeElement(id) {
         var elem = document.getElementById(id);
         return elem.parentNode.removeChild(elem);
     }
+
     function getChildImage(parentId) {
         return document.getElementById(parentId).firstElementChild
     }
+
     function verifyOtp() {
         var otp = $("#otpValue").val();
         var number = $("#number").val();
         var message = $("#message").val();
         var name = $("#name").val();
-        if (otp.length  < 4) {
+        if (otp.length < 4) {
             alert("कृपया आपले ओटीपी प्रविष्ट करा");
             return;
         }
-        $.post( base_url + "/api/rakhi-otp-verify", {
+        $.post(base_url + "/api/rakhi-otp-verify", {
             otp: otp,
             mobile: number,
             id: rakhi_id
@@ -596,14 +660,15 @@
                 $("#number").val('');
                 $("#message").val('');
                 $("#otpValue").val('');
-                chosen_image_id  = "";
-                rakhi_id  = "";
-                document.getElementById("senderId").innerHTML="आपली बहीण, <br>" + name;
+                chosen_image_id = "";
+                document.getElementById("senderId").innerHTML = "आपली बहीण, <br>" + name;
+                document.getElementById("fbshare").href = "https://facebook.com/sharer/sharer.php?u="+base_url+"/share?id="+rakhi_id;
+                rakhi_id = "";
                 $("#cmMessage").text(message);
                 $("#otpModal").modal('hide');
                 $("#openModal").click();
                 $('#myModal').trigger('focus')
-            }else{
+            } else {
                 alert("चुकीचा ओटीपी");
                 // $("#otpModalBtn").click();
             }
@@ -612,4 +677,5 @@
             console.log(err.statusText)
         });
     }
+    // $("#openModal").click();
 </script>
