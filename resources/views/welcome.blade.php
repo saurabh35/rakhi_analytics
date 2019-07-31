@@ -381,7 +381,7 @@
                                                     माननीय मुख्यमंत्री<br>
                                                     महाराष्ट्र प्रदेश (राज्य )<br></div>
                                                 <div class="col-md-2">
-                                                    <a id="fbshare" class="resp-sharing-button__link"
+                                                    <a id="fbshare" class="resp-sharing-button__link" target="_blank"
                                                        href="https://facebook.com/sharer/sharer.php?u=https://rakhi2cm.com/" rel="noopener"
                                                        aria-label="Share on Facebook">
                                                         <div class="resp-sharing-button resp-sharing-button&#45;&#45;facebook resp-sharing-button&#45;&#45;large">
